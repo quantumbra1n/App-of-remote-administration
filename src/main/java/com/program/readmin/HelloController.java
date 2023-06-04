@@ -170,4 +170,21 @@ public class HelloController {
     protected void administration() throws Exception { // Открыть приложение для удаленного администрирования
         ShellExecute.execFile("jrdesktop.bat");
     }
+
+    // СОБЫТИЯ ЭЛЕМЕНТОВ ПАНЕЛИ МЕНЮ
+    @FXML
+    protected void dbMenuItem() throws IOException { // Кнопка "База Данных" в панели меню
+
+        // Инициализация дочернего окна "DataBaseEditor"
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dbeditor.fxml"));
+        Scene sceneDataBaseEditor = new Scene(fxmlLoader.load());
+        Stage stageDataBaseEditor = new Stage();
+        stageDataBaseEditor.setTitle("DataBase Editor");
+        stageDataBaseEditor.setScene(sceneDataBaseEditor);
+        stageDataBaseEditor.centerOnScreen();
+        stageDataBaseEditor.setResizable(false);
+        stageDataBaseEditor.getIcons().add(new Image("C:\\RemAdmin\\pc.png"));
+
+        stageDataBaseEditor.show();
+    }
 }
