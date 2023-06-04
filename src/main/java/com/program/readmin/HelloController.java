@@ -127,4 +127,43 @@ public class HelloController {
             }
         }
     }
+
+    @FXML
+    protected void register() throws ClassNotFoundException, SQLException { // Кнопка "Зарегистрировать" в панели регистрации
+        // Проверка на пустые поля
+        if (Objects.equals(emailRegister.getText(), "") || Objects.equals(loginRegister.getText(), "")
+                || Objects.equals(passwordRegister.getText(), "") || Objects.equals(repeatPasswordRegister.getText(), ""))
+        {
+            new WarningEmptyFields().show();
+            return;
+        }
+        // Проверка на совпадение введенных паролей
+        if (!Objects.equals(passwordRegister.getText(), repeatPasswordRegister.getText())) {
+            new ErrorPasswords().show();
+            return;
+        }
+        if (!(new DataBaseQuery().checkEmailLogin(emailRegister.getText(), loginRegister.getText()))) {
+            return;
+        } else {
+            // Если введенные данные прошли проверку - добавить их в таблицу
+            // Добавим пользователя в таблицу
+            DataBaseQuery cmd = new DataBaseQuery();
+            int lastId = cmd.getLastId();
+            cmd.addUser(++lastId, emailRegister.getText(), loginRegister.getText(), passwordRegister.getText(), 2);
+
+            // Скроем панель регистрации
+            registrationPane.setDisable(true);
+            registrationPane.setVisible(false);
+
+            // Откроем панель выбора действия
+            actionPane.setDisable(false);
+            actionPane.setVisible(true);
+
+            // Откроем меню бар
+            menuBar.setDisable(false);
+            menuBar.setVisible(true);
+            userNameMenu.setText(loginRegister.getText());
+        }
+    }
+
 }

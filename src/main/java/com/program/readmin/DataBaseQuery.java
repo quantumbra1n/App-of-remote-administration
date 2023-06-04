@@ -52,4 +52,18 @@ public class DataBaseQuery {
         PreparedStatement statement = connection.prepareStatement(query);
         statement.executeUpdate(); // Выполним запрос
     }
+
+    public boolean checkEmailLogin(String email, String login) throws SQLException { // Проверка логина и почты, возвращает последний id
+        ResultSet resultSet = statement.executeQuery(this.querySelectAllUsers); // Запрос
+        while (resultSet.next()) {
+
+            // Проверка на существование почты и логина
+            if (Objects.equals(email, resultSet.getString(2))
+                    || Objects.equals(login, resultSet.getString(3))) {
+                new ErrorEmailLogin().show();
+                return false;
+            }
+        }
+        return true;
+    }
 }
