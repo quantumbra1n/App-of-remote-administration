@@ -54,3 +54,15 @@ class InfoDialog extends MsgDialog {
         super(new Alert(Alert.AlertType.INFORMATION), "О программе", contentText);
     }
 }
+
+class InfoAbout extends InfoDialog {
+    public InfoAbout() {
+        super("""
+            Программа удалённого администрирования
+            
+            Предназначена для подключения к удаленным компьютерам и ведения чата между пользователями.
+            
+            ©Copyright 2023
+            """);
+    }
+}
