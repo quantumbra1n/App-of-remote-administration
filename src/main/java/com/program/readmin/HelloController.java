@@ -43,4 +43,26 @@ public class HelloController {
 
     @FXML
     private Pane typeConnectionPane; // Панель выбора типа подключения
+
+    // ТЕКСТОВЫЕ ПОЛЯ
+
+    // Из панели авторизации
+    @FXML
+    private TextField loginAuthorization;
+
+    @FXML
+    private PasswordField passwordAuthorization;
+
+    // Из панели регистрации
+    @FXML
+    private TextField emailRegister;
+
+    @FXML
+    private TextField loginRegister;
+
+    @FXML
+    private PasswordField passwordRegister;
+
+    @FXML
+    private PasswordField repeatPasswordRegister;
 }
