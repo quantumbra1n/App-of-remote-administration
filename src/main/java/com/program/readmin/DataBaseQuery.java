@@ -26,4 +26,13 @@ public class DataBaseQuery {
         new ErrorAuthorization().show();
         return 0;
     }
+
+    public int getLastId() throws SQLException {
+        ResultSet result = statement.executeQuery(this.querySelectAllUsers); // Запрос
+        int lastId = 0; // Для определения последнего id в таблице
+        while (result.next()) {
+            lastId = result.getInt(1);
+        }
+        return lastId;
+    }
 }
