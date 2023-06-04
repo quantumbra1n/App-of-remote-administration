@@ -77,4 +77,17 @@ public class ShellExecute {
             pool.shutdown();
         }
     }
+
+    public static int execute(String command) throws Exception {
+        String[] cmd=new String[3];
+        cmd[0] = "cmd.exe" ;
+        cmd[1] = "/C" ;
+        cmd[2] = command;
+
+        Runtime rt = Runtime.getRuntime();
+        Process proc = rt.exec(cmd);
+
+        return proc.waitFor();
+
+    }
 }
