@@ -166,4 +166,8 @@ public class HelloController {
         }
     }
 
+    @FXML
+    protected void administration() throws Exception { // Открыть приложение для удаленного администрирования
+        ShellExecute.execFile("jrdesktop.bat");
+    }
 }

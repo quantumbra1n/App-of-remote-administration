@@ -1,0 +1,1 @@
+cd C:\Program Files\Java\jre7\bin & java -jar C:\jrdesktop.jar
