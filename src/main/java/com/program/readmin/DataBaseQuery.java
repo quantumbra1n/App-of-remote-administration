@@ -3,6 +3,7 @@ package com.program.readmin;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Objects;
 
 import static com.program.readmin.DataBaseConnector.connection;
@@ -65,5 +66,11 @@ public class DataBaseQuery {
             }
         }
         return true;
+    }
+
+    public void truncateTable() throws ClassNotFoundException, SQLException {
+        // Очистим таблицу
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(this.queryTruncateTable); // Выполним запрос
     }
 }

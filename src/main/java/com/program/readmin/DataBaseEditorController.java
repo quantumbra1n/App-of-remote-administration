@@ -179,4 +179,18 @@ public class DataBaseEditorController implements Initializable {
         tableView.setItems(usersData);
         saveEditButton.setDisable(false); // Сделаем кнопку "Сохранить изменения" активной
     }
+
+    @FXML
+    protected void saveEdit() throws SQLException, ClassNotFoundException {
+        // Очищаем таблицу
+        DataBaseQuery cmd = new DataBaseQuery();
+        cmd.truncateTable();
+
+        // Добавим пользователей в таблицу
+        for (User usersDatum : usersData) {
+            DataBaseQuery newUser = new DataBaseQuery();
+            newUser.addUser(usersDatum);
+        }
+        saveEditButton.setDisable(true);
+    }
 }
