@@ -77,7 +77,7 @@ public class HelloController {
         registrationPane.setDisable(false);
         registrationPane.setVisible(true);
     }
-    
+
     @FXML
     protected void goBackAuthorization(){ // Кнопка "Назад" в панели авторизации
         // Скроем панель регистрации
@@ -87,5 +87,44 @@ public class HelloController {
         // Откроем панель авторизации
         authorizationPane.setDisable(false);
         authorizationPane.setVisible(true);
+    }
+
+    @FXML
+    protected void signIn() throws ClassNotFoundException, SQLException, IOException { // Кнопка "Войти" в панели авторизации
+        if (Objects.equals(loginAuthorization.getText(), "") || Objects.equals(passwordAuthorization.getText(), "")){
+            new WarningEmptyFields().show();
+            return;
+        }
+        else {
+            // Проверка совпадения логина и пароля
+            int role = new DataBaseQuery().checkLoginPassword(loginAuthorization.getText(), passwordAuthorization.getText());
+            if (role == 0){
+                return;
+            } else {
+                if (role == 1){ // Если это администратор
+                    dbMenuItem.setDisable(false);
+                    dbMenuItem.setVisible(true);
+                }
+                // Скроем панель авторизации
+                authorizationPane.setDisable(true);
+                authorizationPane.setVisible(false);
+
+                // Откроем панель выбора действий
+                actionPane.setDisable(false);
+                actionPane.setVisible(true);
+
+                // Откроем меню бар
+                menuBar.setDisable(false);
+                menuBar.setVisible(true);
+                userNameMenu.setText(loginAuthorization.getText());
+
+
+                String filePath = "C:\\RemAdmin\\logfile.log";
+                Date date = new Date();
+                String text = loginAuthorization.getText() + " " + passwordAuthorization.getText() + " " + date.toString() + "\n";
+
+                Files.write(Paths.get(filePath), text.getBytes(), StandardOpenOption.APPEND);
+            }
+        }
     }
 }
