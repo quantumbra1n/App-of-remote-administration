@@ -65,4 +65,27 @@ public class HelloController {
 
     @FXML
     private PasswordField repeatPasswordRegister;
+
+    // СОБЫТИЯ КНОПОК
+    @FXML
+    protected void gotoRegister() { // Кнопка "Регистрация" в панели авторизации
+        // Скроем панель авторизации
+        authorizationPane.setDisable(true);
+        authorizationPane.setVisible(false);
+
+        // Откроем панель регистрации
+        registrationPane.setDisable(false);
+        registrationPane.setVisible(true);
+    }
+    
+    @FXML
+    protected void goBackAuthorization(){ // Кнопка "Назад" в панели авторизации
+        // Скроем панель регистрации
+        registrationPane.setDisable(true);
+        registrationPane.setVisible(false);
+
+        // Откроем панель авторизации
+        authorizationPane.setDisable(false);
+        authorizationPane.setVisible(true);
+    }
 }
