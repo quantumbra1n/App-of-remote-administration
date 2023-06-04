@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="353.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.program.readmin.DataBaseEditorController">
+   <children>
+      <TableView fx:id="tableView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="302.0" prefWidth="458.0">
+        <columns>
+          <TableColumn fx:id="idTableColumn" prefWidth="46.0" text="id" />
+          <TableColumn fx:id="emailTableColumn" prefWidth="143.0" text="email" />
+            <TableColumn fx:id="loginTableColumn" prefWidth="97.0" text="login" />
+            <TableColumn fx:id="passwordTableColumn" prefWidth="97.0" text="password" />
+            <TableColumn fx:id="roleTableColumn" prefWidth="75.0" text="role" />
+        </columns>
+      </TableView>
+      <Button fx:id="createUserButton" layoutX="476.0" layoutY="124.0" mnemonicParsing="false" onAction="#createUser" text="Добавить пользователя">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteUserButton" layoutX="481.0" layoutY="184.0" mnemonicParsing="false" onAction="#deleteUser" text="Удалить пользователя">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveEditButton" disable="true" layoutX="481.0" layoutY="287.0" mnemonicParsing="false" onAction="#saveEdit" text="Сохранить изменения">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="477.0" layoutY="14.0" text="DataBase Editor">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailTextField" layoutX="89.0" layoutY="317.0" prefHeight="25.0" prefWidth="128.0" promptText="email" />
+      <TextField fx:id="loginTextField" layoutX="217.0" layoutY="317.0" prefHeight="25.0" prefWidth="83.0" promptText="login" />
+      <TextField fx:id="passwordTextField" layoutX="300.0" layoutY="317.0" prefHeight="25.0" prefWidth="98.0" promptText="password" />
+      <TextField fx:id="roleTextField" layoutX="398.0" layoutY="317.0" prefHeight="25.0" prefWidth="74.0" promptText="role" />
+   </children>
+</AnchorPane>
