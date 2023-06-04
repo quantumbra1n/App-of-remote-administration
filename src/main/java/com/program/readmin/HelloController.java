@@ -187,4 +187,48 @@ public class HelloController {
 
         stageDataBaseEditor.show();
     }
+
+    @FXML
+    protected void chat() throws IOException { // Переключиться на окно выбора типа подключения
+        actionPane.setVisible(false);
+        actionPane.setDisable(true);
+
+        typeConnectionPane.setDisable(false);
+        typeConnectionPane.setVisible(true);
+    }
+
+    @FXML
+    protected void choiceServer() throws Exception { // Открыть приложение чат-сервера
+        ShellExecute.execFile("ChatServer.bat");
+    }
+
+    @FXML
+    protected void choiceClient() throws Exception { // Открыть приложение чат-клиента
+
+        ShellExecute.execFile("ChatClient.bat");
+    }
+
+    @FXML
+    protected void goBackAction(){ // Переключиться обратно на окно выбора действия
+        actionPane.setVisible(true);
+        actionPane.setDisable(false);
+
+        typeConnectionPane.setDisable(true);
+        typeConnectionPane.setVisible(false);
+    }
+
+    @FXML
+    protected void logOutMenuItem() { // Кнопка "Выйти" в панели меню
+        actionPane.setDisable(true);
+        actionPane.setVisible(false);
+
+        loginAuthorization.setText("");
+        passwordAuthorization.setText("");
+
+        menuBar.setDisable(true);
+        menuBar.setVisible(false);
+
+        authorizationPane.setDisable(false);
+        authorizationPane.setVisible(true);
+    }
 }
