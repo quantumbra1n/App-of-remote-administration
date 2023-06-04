@@ -39,3 +39,11 @@ class ErrorDialog extends MsgDialog {
         this.alert = new Alert(Alert.AlertType.ERROR);
     }
 }
+
+// Класс диалога типа "Предупреждение"
+class WarningDialog extends MsgDialog {
+
+    public WarningDialog(String contentText) {
+        super(new Alert(Alert.AlertType.WARNING), "Предупреждение", contentText);
+    }
+}
