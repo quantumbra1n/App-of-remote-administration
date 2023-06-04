@@ -72,3 +72,9 @@ class WarningEmptyFields extends WarningDialog {
         super("Заполните все поля");
     }
 }
+
+class ErrorAuthorization extends ErrorDialog {
+    public ErrorAuthorization() {
+        super("Неверный логин или пароль");
+    }
+}
