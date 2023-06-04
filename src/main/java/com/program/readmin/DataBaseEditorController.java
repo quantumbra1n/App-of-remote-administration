@@ -144,4 +144,29 @@ public class DataBaseEditorController implements Initializable {
             }
         });
     }
+
+    @FXML
+    protected void createUser(){ // Кнопка "Создать нового пользователя"
+        if (Objects.equals(emailTextField.getText(), "") ||
+                Objects.equals(loginTextField.getText(), "") ||
+                Objects.equals(passwordTextField.getText(), "")) {
+            new WarningEmptyFields().show();
+            return;
+        }
+        for (User usersDatum : usersData) {
+            if (Objects.equals(usersDatum.getLogin(), loginTextField.getText()) ||
+                    Objects.equals(usersDatum.getEmail(), emailTextField.getText())) {
+                new ErrorEmailLogin().show();
+
+                return;
+            }
+        }
+
+        usersData.add(new User(usersData.size() + 1, emailTextField.getText(), loginTextField.getText(), passwordTextField.getText(), Integer.parseInt(roleTextField.getText())));
+        tableView.setItems(usersData);
+        saveEditButton.setDisable(false); // Сделаем кнопку "Сохранить изменения" активной
+        emailTextField.clear();
+        loginTextField.clear();
+        passwordTextField.clear();
+    }
 }
