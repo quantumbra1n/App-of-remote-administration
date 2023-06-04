@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
+import static com.program.readmin.DataBaseConnector.connection;
 import static com.program.readmin.DataBaseConnector.statement;
 
 public class DataBaseQuery {
@@ -34,5 +35,13 @@ public class DataBaseQuery {
             lastId = result.getInt(1);
         }
         return lastId;
+    }
+
+    public void addUser(User user) throws SQLException {
+        String query = this.queryInsertIntoUser + user.getId() + ", '" + user.getEmail() + "', '"
+                + user.getLogin() + "', '" + user.getPassword() + "', '" + user.getRole() + "');";
+
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.executeUpdate(); // Выполним запрос
     }
 }
