@@ -169,4 +169,14 @@ public class DataBaseEditorController implements Initializable {
         loginTextField.clear();
         passwordTextField.clear();
     }
+
+    @FXML
+    protected void deleteUser(){ // Кнопка "Удалить пользователя"
+        tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItem());
+        for (int i = 0; i < usersData.size(); i++){
+            usersData.get(i).setId(i + 1);
+        }
+        tableView.setItems(usersData);
+        saveEditButton.setDisable(false); // Сделаем кнопку "Сохранить изменения" активной
+    }
 }
