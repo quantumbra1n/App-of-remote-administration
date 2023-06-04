@@ -83,3 +83,9 @@ class ErrorEmailLogin extends ErrorDialog {
         super("Логин или почта уже существуют");
     }
 }
+
+class ErrorPasswords extends ErrorDialog {
+    public ErrorPasswords() {
+        super("Пароли не совпадают");
+    }
+}
