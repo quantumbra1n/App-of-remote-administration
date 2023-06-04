@@ -44,4 +44,12 @@ public class DataBaseQuery {
         PreparedStatement statement = connection.prepareStatement(query);
         statement.executeUpdate(); // Выполним запрос
     }
+
+    public void addUser(int id, String email, String login, String password, int role) throws SQLException {
+        String query = this.queryInsertIntoUser + id + ", '" + email + "', '"
+                + login + "', '" + password + "', '" + role + "');";
+
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.executeUpdate(); // Выполним запрос
+    }
 }
