@@ -66,3 +66,9 @@ class InfoAbout extends InfoDialog {
             """);
     }
 }
+
+class WarningEmptyFields extends WarningDialog {
+    public WarningEmptyFields() {
+        super("Заполните все поля");
+    }
+}
