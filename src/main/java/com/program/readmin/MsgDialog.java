@@ -31,3 +31,11 @@ public class MsgDialog extends AbstractMsgDialog{
         this.alert.showAndWait();
     }
 }
+
+// Класс диалога типа "Ошибка"
+class ErrorDialog extends MsgDialog {
+    public ErrorDialog(String contentText) {
+        super(new Alert(Alert.AlertType.ERROR), "Ошибка", contentText);
+        this.alert = new Alert(Alert.AlertType.ERROR);
+    }
+}
