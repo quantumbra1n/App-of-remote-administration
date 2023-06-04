@@ -47,3 +47,10 @@ class WarningDialog extends MsgDialog {
         super(new Alert(Alert.AlertType.WARNING), "Предупреждение", contentText);
     }
 }
+// Класс диалога типа "Информация"
+class InfoDialog extends MsgDialog {
+
+    public InfoDialog(String contentText) {
+        super(new Alert(Alert.AlertType.INFORMATION), "О программе", contentText);
+    }
+}
