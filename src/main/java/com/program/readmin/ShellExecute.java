@@ -4,7 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.concurrent.Callable;
+import java.util.List;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 public class ShellExecute {
@@ -44,6 +45,36 @@ public class ShellExecute {
         @Override
         public Object call() throws Exception{
             return new BufferedReader(new InputStreamReader(inputStream)).lines().collect(Collectors.toList());
+        }
+    }
+
+    public static void execFile (String batFile) {
+        ProcessBuilder builder = new ProcessBuilder();
+        builder.command(System.getProperty("user.dir") + "\\scripts\\" + batFile);
+
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+
+        try {
+            Process process = builder.start();
+            ProcessReader task = new ProcessReader(process.getInputStream());
+            Future<List<String>> future = pool.submit(task);
+
+            List<String> results = future.get();
+            for (String res : results) {
+                System.out.println(res);
+            }
+
+            int exitCode = process.waitFor();
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }finally {
+            pool.shutdown();
         }
     }
 }
