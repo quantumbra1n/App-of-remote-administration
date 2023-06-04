@@ -231,4 +231,14 @@ public class HelloController {
         authorizationPane.setDisable(false);
         authorizationPane.setVisible(true);
     }
+
+    @FXML
+    protected void aboutUs(){ // Показать диалоговое окно с информацией о программе
+        new InfoAbout().show();
+    }
+
+    @FXML
+    protected void giveLog() throws Exception { // Открыть лог-файл
+        ShellExecute.execute("C:\\RemAdmin\\logfile.log");
+    }
 }
