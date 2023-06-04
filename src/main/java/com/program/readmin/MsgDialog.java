@@ -78,3 +78,8 @@ class ErrorAuthorization extends ErrorDialog {
         super("Неверный логин или пароль");
     }
 }
+class ErrorEmailLogin extends ErrorDialog {
+    public ErrorEmailLogin() {
+        super("Логин или почта уже существуют");
+    }
+}
